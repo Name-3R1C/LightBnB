@@ -116,7 +116,7 @@ const getAllProperties = (options, limit = 10) => {
   FROM properties
   JOIN property_reviews ON properties.id = property_id
   WHERE TRUE 
-  `;
+  `; // using TRUE as dummy clause to make WHERE to work when option is empty
 
   if (options.city) {
     queryParams.push(`%${options.city}%`);
@@ -140,7 +140,7 @@ const getAllProperties = (options, limit = 10) => {
 
   queryString += `
   GROUP BY properties.id
-  HAVING TRUE `;
+  HAVING TRUE `; // using TRUE as dummy clause to make HAVING to work when option is empty
 
   if (options.minimum_rating) {
     queryParams.push(`${options.minimum_rating}`);
@@ -150,7 +150,7 @@ const getAllProperties = (options, limit = 10) => {
   queryString += `ORDER BY cost_per_night
   LIMIT $${queryParams.length};
   `;
-
+  
   return pool
     .query (queryString, queryParams)
     .then ((result) => {
@@ -178,7 +178,7 @@ const addProperty = function(property) {
     property.description,
     property.thumbnail_photo_url,
     property.cover_photo_url,
-    property.cost_per_night,
+    property.cost_per_night*100,
     property.street,
     property.city,
     property.province,
