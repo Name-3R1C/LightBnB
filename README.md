@@ -9,7 +9,7 @@ LightBnB is a web application that utilizes a database and server-side JavaScrip
 
 1. Clone the repository:
 
-```shell
+```
 git clone https://github.com/Name-3R1C/LightBnB.git
 ```
 2. Install dependencies:
@@ -20,7 +20,7 @@ npm install
 # Usage
 1. Ensure database is set up (see Database section for details)
 2. Run the server:
-```shell
+```
 npm run local
 ```
 3. Open a web browser and navigate to http://localhost:3000 to access LightBnB.
@@ -30,7 +30,7 @@ npm run local
 LightBnB uses a PostgreSQL database to store property and user information. To set up the database, follow these steps:
 1. Install PostgreSQL (if not already installed).
 2. Create a new PostgreSQL database called `lightbnb`
-```shell
+```
 CREATE DATABASE lightbnb;
 ```
 3. Navigate to the database:
@@ -38,7 +38,7 @@ CREATE DATABASE lightbnb;
 \c lightbnb
 ```
 4. create the necessary tables and populate them with sample data:
-```shell
+```
 \i migrations/01_schema.sql
 \i seeds/01_seeds.sql
 \i seeds/02_seeds.sql
